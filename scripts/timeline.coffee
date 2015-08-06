@@ -14,6 +14,7 @@ request = require 'request'
 module.exports = (robot) ->
   robot.hear /.*?/i, (msg) ->
     channel = msg.envelope.room
+    return if channel.match(/^timeline/)
     message = msg.message.text
     username = msg.message.user.name
     user_id = msg.message.user.id
